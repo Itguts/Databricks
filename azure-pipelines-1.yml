@@ -30,4 +30,3 @@ steps:
     notebookPath: '/Shared/Test1.py'
     existingClusterId: '1228-064843-ggpdtncg'
 
-- task: waitexecution@0
