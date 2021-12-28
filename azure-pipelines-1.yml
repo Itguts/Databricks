@@ -30,3 +30,4 @@ steps:
     notebookPath: '/Shared/Test1'
     existingClusterId: '1228-064843-ggpdtncg'
 
+- task: waitexecution@0
