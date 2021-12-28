@@ -28,7 +28,7 @@ steps:
 - task: startcluster@0
   inputs:
     clusterid: '1228-064843-ggpdtncg'
-    failOnStderr: true
+
 
 - task: executenotebook@0
   inputs:
