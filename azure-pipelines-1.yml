@@ -24,7 +24,7 @@ steps:
     token: 'dapib786edf1271c960e9a28712fc9b036e3'
 
 
-
+- script: ls *
 - task: executenotebook@0
   inputs:
     notebookPath: '/Notebooks/Test.py'
