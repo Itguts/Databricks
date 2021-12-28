@@ -20,13 +20,10 @@ steps:
 
 - task: configuredatabricks@0
   inputs:
-    url: 'https://dbc-6c3e356a-423e.cloud.databricks.com/'
+    url: 'https://dbc-6c3e356a-423e.cloud.databricks.com'
     token: 'dapib786edf1271c960e9a28712fc9b036e3'
 
-- task: startcluster@0
-  inputs:
-    clusterid: '1228-064843-ggpdtncg'
-    failOnStderr: true
+
 
 - task: executenotebook@0
   inputs:
