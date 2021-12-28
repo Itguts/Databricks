@@ -27,6 +27,6 @@ steps:
 - script: ls *
 - task: executenotebook@0
   inputs:
-    notebookPath: '/Shared/Test1.py'
+    notebookPath: '/Shared/Test1'
     existingClusterId: '1228-064843-ggpdtncg'
 
