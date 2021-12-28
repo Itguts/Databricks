@@ -1,0 +1,57 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+- task: AzureCLI@1
+  inputs:
+    azureSubscription: 'Visual Studio Professional Subscription (df054c69-192a-4730-96be-b270a073dd2d)'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      mkdir $(Build.SourcesDirectory)\BlobFile
+      cd $(Build.SourcesDirectory)\BlobFile
+      echo "See ya later, alligator" Test.txt
+      az storage blob download --container-name $(containername) --file $(Build.SourcesDirectory)\BlobFile\TestResult_Actual.csv --name "TestResult_Actual.csv" --account-key $(accountkey) --account-name $(accountname)
+
+- script: echo "Build.ArtifactStagingDirectory:" 
+
+- script: echo "$(Build.ArtifactStagingDirectory)"
+
+- script: echo "Build.BinariesDirectory:" 
+
+- script: echo "$(Build.BinariesDirectory)"
+
+- script: echo "Build.SourcesDirectory:"
+
+- script: echo "$(Build.SourcesDirectory)"
+
+- bash: ls $(Build.SourcesDirectory)
+
+
+- task: CopyFiles@2
+  displayName: 'Copy test report file to generate build artifacts'
+  inputs:  
+    Contents: '**'
+    SourceFolder: $(Build.SourcesDirectory)\BlobFile
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\DeployableNotebooks'
+
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\DeployableNotebooks'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
