@@ -34,6 +34,6 @@ steps:
   inputs:
     notebookPath: '/Shared/Test2'
     existingClusterId: '1228-064843-ggpdtncg'
-    executionParams: '{"Name":"pakpak"}'
+    executionParams: '{"Name":"pakpak","Actual":321}'
 
 - task: waitexecution@0
