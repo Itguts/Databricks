@@ -25,12 +25,12 @@ steps:
 
 - task: startcluster@0
   inputs:
-    clusterid: 'hcbdsihvdsuivuid'
+    clusterid: '1228-064843-ggpdtncg'
     failOnStderr: true
 
 - task: executenotebook@0
   inputs:
-    notebookPath: '/src/notebook1.py'
-    existingClusterId: 'bduyfg84t84hfuidhv9'
+    notebookPath: '/Notebooks/Test.py'
+    existingClusterId: '1228-064843-ggpdtncg'
 
 - task: waitexecution@0
